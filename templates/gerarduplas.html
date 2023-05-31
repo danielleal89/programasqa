@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Duplas</title>
+    <style>
+        body {
+            background-color: #000080;
+        }
+
+        .half-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .half-screen > div {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .half-screen ul {
+            column-count: 2;
+            text-align: left;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .half-screen li {
+            break-inside: avoid-column;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .custom-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000080;
+            background-color: #FFFF00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .custom-button:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            color: #FFFFFF;
+            font-size: 40px;
+        }
+
+        ul {
+            color: #FFFFFF;
+        }
+
+        .image-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 100px;
+        }
+    </style>
+    <script>
+        function gerarDuplas() {
+            var nomes = ['Andréia', 'Aline', 'Any', 'Daniel', 'Guilherme', 'Iury', 'Juliana', 'Magdiel', 'Paula', 'Radamés', 'Rayssa'];
+            var nomes2 = ['Andréia', 'Aline', 'Any', 'Daniel', 'Guilherme', 'Iury', 'Juliana', 'Magdiel', 'Paula', 'Radamés', 'Rayssa'];
+            var listaFinal = [];
+
+            var preantepenultimoE = '';
+            var preantepenultimoD = '';
+            var antepenultimoE = '';
+            var antepenultimoD = '';
+            var penultimoE = '';
+            var penultimoD = '';
+            var ultimoE = '';
+            var ultimoD = '';
+            var cont = 0;
+
+            while (cont < 60) {
+                var nomeE = nomes[Math.floor(Math.random() * nomes.length)];
+                var nomeD = nomes2[Math.floor(Math.random() * nomes2.length)];
+                var analistas = `${nomeE}/${nomeD}`;
+
+                if (analistas !== 'Andréia/Juliana' && analistas !== 'Juliana/Andréia') {
+                    if (!listaFinal.includes(analistas)) {
+                        if (nomeE !== nomeD) {
+                            if ((ultimoE !== nomeE && penultimoE !== nomeE && antepenultimoE !== nomeE && preantepenultimoE !== nomeE) &&
+                                (ultimoD !== nomeD && penultimoD !== nomeD && antepenultimoD !== nomeD && preantepenultimoD !== nomeD) &&
+                                (ultimoE !== nomeD && ultimoD !== nomeE)){
+                                cont++;
+
+                                preantepenultimoE = antepenultimoE;
+                                preantepenultimoD = antepenultimoD;
+
+                                antepenultimoE = penultimoE;
+                                antepenultimoD = penultimoD;
+
+                                penultimoE = ultimoE;
+                                penultimoD = ultimoD;
+
+                                ultimoE = nomeE;
+                                ultimoD = nomeD;
+                                listaFinal.push(analistas);
+                            }
+                        }
+                    }
+                }
+            }
+
+            var ulElements = document.querySelectorAll('.half-screen ul');
+            ulElements.forEach(function (ul) {
+                ul.innerHTML = ''; // Limpa o conteúdo atual das <ul>
+
+                // Adiciona as novas duplas geradas na <ul>
+                listaFinal.forEach(function (dupla, index) {
+                    var li = document.createElement('li');
+                    li.innerText = dupla;
+                    ul.appendChild(li);
+
+                    if ((index + 1) % 5 === 0) {
+                        var br = document.createElement('br');
+                        ul.appendChild(br);
+                    }
+                });
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="half-screen">
+        <h1>Duplas</h1>
+        <div>
+            <ul>
+                <!-- As duplas serão geradas dinamicamente -->
+            </ul>
+        </div>
+        <div class="button-container">
+            <button class="custom-button" onclick="gerarDuplas()">Gerar Duplas</button>
+        </div>
+    </div>
+
+</body>
+</html>
+

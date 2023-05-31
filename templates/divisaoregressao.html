@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BB</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #000080;
+        }
+
+        .half-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .half-screen > div {
+            flex: 1;
+            padding: 10px;
+            color: #FFFFFF;
+        }
+
+        .half-screen ul {
+            text-align: left;
+            font-size: 20px;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+
+        .half-screen li {
+            break-inside: avoid-column;
+        }
+
+        #divisaoSuperior {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 332px;
+            height: 85px;
+            background-color: #cor2;
+            margin-bottom: 20px;
+        }
+
+        .label1 {
+            font-size: 35px;
+            color: #FFFFFF;
+        }
+
+        .label2 {
+            font-size: 13px;
+            color: #corLetras2;
+        }
+
+        #android {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: #cor;
+            font-size: 20px;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+
+        #ios {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: #cor;
+            font-size: 20px;
+            color: #FFFFFF;
+        }
+
+        #regressoes {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: #cor;
+            font-size: 20px;
+            color: #FFFFFF;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 10px;
+        }
+
+        .grid-regressoes {
+            grid-template-columns: 1fr 1fr;
+            font-size: 20px;
+            color: #FFFFFF;
+        }
+
+        .custom-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000080;
+            background-color: #FFFF00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .custom-button2 {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000080;
+            background-color: #FFFF00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-right: 40px;
+        }
+    </style>
+    <script>
+        function selecionarTodos() {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var selecionar = true;
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].id !== 'regressaoApp' && checkboxes[i].id !== 'centralizadorPF' && !checkboxes[i].checked) {
+                    selecionar = false;
+                    break;
+                }
+            }
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].id !== 'regressaoApp' && checkboxes[i].id !== 'centralizadorPF') {
+                    checkboxes[i].checked = !selecionar;
+                }
+            }
+        }
+
+        function gerar() {
+            var regressaoApp = document.getElementById('regressaoApp');
+            var centralizadorPF = document.getElementById('centralizadorPF');
+
+            if (!regressaoApp.checked && !centralizadorPF.checked) {
+                alert('Selecione ao menos uma opção: Regressão App ou Centralizador PF!');
+            } else {
+                analistasAndroid = {"Andréia": 10, "Any": 20, "Daniel": 30, "Iury": 40, "Juliana": 50, "Radamés": 60};
+                analistasIOS = {"Aline": 10, "Guilherme": 20, "Lorena": 30, "Magdiel": 40, "Paula": 50, "Rayssa": 60};
+                listaMenu = {10: "Menu_Parte_1", 20: "Menu_Parte_2", 30: "Menu_Parte_3", 40: "Menu_Parte_4", 50: "Home_Parte_1", 60: "Home_Parte_2"};
+                listaRegressaoApp = {10: "Menu Parte 1 (5h) + Área não logada sem conta cadastrada (1h) + Área não logada PJ (1h) = 7h",
+                              20: "Menu Parte 2 (5h) + Link inteligente/leitor de PDF (30min) + Onboarding abrir conta (2h) = 7h30m",
+                              30: "Menu Parte 3 (5h) + Área não logada com conta cadastrada (2h) + Home PJ (1h) = 8h",
+                              40: "Menu Parte 4 (5h) + Perfil (2h) + Notificações (30min) = 7h30m",
+                              50: "Home Parte 1 (7h) + Instalação/Atualização (20min) = 7h20m",
+                              60: "Home Parte 2 (4h) + Logins/Logins PJ (2h) + Menu PJ (2h) = 8h"};
+                listaRegressaoCentralizadorPF = {10: "Menu Parte 1 (5h) + Área não logada sem conta cadastrada (1h) = 6h",
+                                         20: "Menu Parte 2 (5h) + Onboarding abrir conta (2h) = 7h",
+                                         30: "Menu Parte 3 (5h) + Área não logada com conta cadastrada (2h) = 7h",
+                                         40: "Menu Parte 4 (5h) + Perfil (2h) = 7h",
+                                         50: "Home Parte 1 (7h) + Instalação/atualização (20min) = 7h20m",
+                                         60: "Home Parte 2 (4h) + Logins (1h30m) + Link inteligente/leitor de PDF (30min) + Notificações (30min) = 6h30m"};
+
+                listaFuturaAndroid = {};
+                listaFuturaIOS = {};
+                listaCompletaAndroid = {};
+                listaCompletaIOS = {};
+                listaAtivosAndroid = [];
+                listaAtivosIOS = [];
+
+                if (andreia.checked) { listaAtivosAndroid.push("Andréia") }
+                if (ani.checked) { listaAtivosAndroid.push("Any") }
+                if (daniel.checked) { listaAtivosAndroid.push("Daniel") }
+                if (iury.checked) { listaAtivosAndroid.push("Iury") }
+                if (juliana.checked) { listaAtivosAndroid.push("Juliana") }
+                if (radames.checked) { listaAtivosAndroid.push("Radamés") }
+                if (aline.checked) { listaAtivosIOS.push("Aline") }
+                if (guilherme.checked) { listaAtivosIOS.push("Guilherme") }
+                if (lorena.checked) { listaAtivosIOS.push("Lorena") }
+                if (magdiel.checked) { listaAtivosIOS.push("Magdiel") }
+                if (paula.checked) { listaAtivosIOS.push("Paula") }
+                if (rayssa.checked) { listaAtivosIOS.push("Rayssa") }
+
+                if (regressaoApp.checked) {
+                    var cont = 0;
+                    for (var valor in listaRegressaoApp) {
+                        for (var nome in analistasAndroid) {
+                            if (String(valor) === String(analistasAndroid[nome])) {
+                                if (listaAtivosAndroid.includes(nome)) {
+                                    listaCompletaAndroid[nome] = listaRegressaoApp[valor];
+                                } else {
+                                    if (cont <= 5) {
+                                        listaCompletaAndroid['?????'.padEnd(cont, ' ')] = listaRegressaoApp[valor];
+                                        cont += 1;
+                                    }
+                                }
+                                if (parseInt(analistasAndroid[nome]) === 60) {
+                                    listaFuturaAndroid[nome] = 10;
+                                } else {
+                                    listaFuturaAndroid[nome] = parseInt(analistasAndroid[nome]) + 10;
+                                }
+                            }
+                        }
+                        for (var nome in analistasIOS) {
+                            if (String(valor) === String(analistasIOS[nome])) {
+                                if (listaAtivosIOS.includes(nome)) {
+                                    listaCompletaIOS[nome] = listaRegressaoApp[valor];
+                                } else {
+                                    if (cont <= 5) {
+                                        listaCompletaIOS['?????'.padEnd(cont, ' ')] = listaRegressaoApp[valor];
+                                        cont += 1;
+                                    }
+                                }
+                                if (parseInt(analistasIOS[nome]) === 60) {
+                                    listaFuturaIOS[nome] = 10;
+                                } else {
+                                    listaFuturaIOS[nome] = parseInt(analistasIOS[nome]) + 10;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (centralizadorPF.checked) {
+
+                }
+            }
+            var ulElement = document.querySelector('.half-screen ul');
+            //ulElement.innerHTML = ''; // Limpa o conteúdo atual da <ul>
+
+
+            var h3android = document.createElement('h3');
+            h3android.innerText = 'Android';
+            ulElement.appendChild(h3android);
+            for (var nome in listaCompletaAndroid) {
+                var li = document.createElement('li');
+                li.innerText = nome + ": " + listaCompletaAndroid[nome];
+                ulElement.appendChild(li);
+            }
+
+            var h3ios = document.createElement('h3');
+            h3ios.innerText = 'iOS';
+            ulElement.appendChild(h3ios);
+            for (var nome in listaCompletaIOS) {
+                var li = document.createElement('li');
+                li.innerText = nome + ": " + listaCompletaIOS[nome];
+                ulElement.appendChild(li);
+            }
+        }
+
+        function aaa() {
+            var contador = 1;
+            var ulElement = document.querySelector('.half-screen ul');
+            var h1Element = document.createElement('h3');
+            var h2Element = document.createElement('h3');
+            var h3Element = document.createElement('h3');
+            var h4Element = document.createElement('h3');
+            var h5Element = document.createElement('h3');
+            var h6Element = document.createElement('h3');
+
+            h1Element.innerText = contador + 'º Rodada - Regressão App';
+            ulElement.appendChild(h1Element);
+            gerar();
+            contador += 1;
+            h2Element.innerText = contador + 'º Rodada - Regressão App';
+            ulElement.appendChild(h2Element);
+            gerar();
+            contador += 1;
+            h3Element.innerText = contador + 'º Rodada - Regressão App';
+            ulElement.appendChild(h3Element);
+            gerar();
+            contador += 1;
+            h4Element.innerText = contador + 'º Rodada - Regressão App';
+            ulElement.appendChild(h4Element);
+            gerar();
+            contador += 1;
+            h5Element.innerText = contador + 'º Rodada - Regressão App';
+            ulElement.appendChild(h5Element);
+            gerar();
+            contador += 1;
+            h6Element.innerText = contador + 'º Rodada - Regressão App';
+            ulElement.appendChild(h6Element);
+            gerar();
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="divisaoSuperior">
+        <h2 class="label1">Divisão de Regressões</h2>
+    </div>
+    <div class="grid-regressoes">
+        <input type="checkbox" id="regressaoApp" style="background-color: #cor2;" />
+        <label for="regressaoApp">Regressão App</label>
+
+        <input type="checkbox" id="centralizadorPF" style="background-color: #cor2;" />
+        <label for="centralizadorPF">Centralizador PF</label>
+    </div>
+    <div class="grid-container">
+        <div id="android">
+            <h3>Android</h3>
+            <div>
+                <input type="checkbox" id="andreia" style="background-color: #cor;" />
+                <label for="andreia">Andréia</label>
+            </div>
+            <div>
+                <input type="checkbox" id="ani" style="background-color: #cor;" />
+                <label for="ani">Any</label>
+            </div>
+            <div>
+                <input type="checkbox" id="daniel" style="background-color: #cor;" />
+                <label for="daniel">Daniel</label>
+            </div>
+            <div>
+                <input type="checkbox" id="iury" style="background-color: #cor;" />
+                <label for="iury">Iury</label>
+            </div>
+            <div>
+                <input type="checkbox" id="juliana" style="background-color: #cor;" />
+                <label for="juliana">Juliana</label>
+            </div>
+            <div>
+                <input type="checkbox" id="radames" style="background-color: #cor;" />
+                <label for="radames">Radamés</label>
+            </div>
+        </div>
+
+        <div id="ios">
+            <h3>iOS</h3>
+            <div>
+                <input type="checkbox" id="aline" style="background-color: #cor;" />
+                <label for="aline">Aline</label>
+            </div>
+            <div>
+                <input type="checkbox" id="guilherme" style="background-color: #cor;" />
+                <label for="guilherme">Guilherme</label>
+            </div>
+            <div>
+                <input type="checkbox" id="lorena" style="background-color: #cor;" />
+                <label for="lorena">Lorena</label>
+            </div>
+            <div>
+                <input type="checkbox" id="magdiel" style="background-color: #cor;" />
+                <label for="magdiel">Magdiel</label>
+            </div>
+            <div>
+                <input type="checkbox" id="paula" style="background-color: #cor;" />
+                <label for="paula">Paula</label>
+            </div>
+            <div>
+                <input type="checkbox" id="rayssa" style="background-color: #cor;" />
+                <label for="rayssa">Rayssa</label>
+            </div>
+        </div>
+    </div>
+    <div class="button-container">
+        <button class="custom-button2" onclick="selecionarTodos()">Todos</button>
+        <button class="custom-button" onclick="aaa()">Gerar</button>
+    </div>
+
+    <div class="half-screen">
+        <div>
+            <ul>
+                <!-- As duplas serão geradas dinamicamente -->
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
