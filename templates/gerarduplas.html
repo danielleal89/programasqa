@@ -66,6 +66,11 @@
             left: 0;
             padding: 100px;
         }
+
+        .label1 {
+            font-size: 35px;
+            color: #FFFFFF;
+        }
     </style>
     <script>
         function gerarDuplas() {
@@ -83,17 +88,20 @@
             var ultimoD = '';
             var cont = 0;
 
-            while (cont < 60) {
+            while (cont < 35) {
                 var nomeE = nomes[Math.floor(Math.random() * nomes.length)];
                 var nomeD = nomes2[Math.floor(Math.random() * nomes2.length)];
                 var analistas = `${nomeE}/${nomeD}`;
+                var analistasInvertidos = `${nomeD}/${nomeE}`;
 
-                if (analistas !== 'Andréia/Juliana' && analistas !== 'Juliana/Andréia') {
+                if (analistas !== 'Andréia/Juliana' && analistas !== 'Juliana/Andréia' &&
+                    analistas !== 'Any/Iury' && analistas !== 'Iury/Any') {
                     if (!listaFinal.includes(analistas)) {
                         if (nomeE !== nomeD) {
                             if ((ultimoE !== nomeE && penultimoE !== nomeE && antepenultimoE !== nomeE && preantepenultimoE !== nomeE) &&
                                 (ultimoD !== nomeD && penultimoD !== nomeD && antepenultimoD !== nomeD && preantepenultimoD !== nomeD) &&
-                                (ultimoE !== nomeD && ultimoD !== nomeE)){
+                                (ultimoD !== nomeE && penultimoD !== nomeE && antepenultimoD !== nomeE) &&
+                                (ultimoE !== nomeD && penultimoE !== nomeD && antepenultimoE !== nomeD)){
                                 cont++;
 
                                 preantepenultimoE = antepenultimoE;
@@ -108,6 +116,7 @@
                                 ultimoE = nomeE;
                                 ultimoD = nomeD;
                                 listaFinal.push(analistas);
+                                listaFinal.push(analistasInvertidos);
                             }
                         }
                     }
@@ -135,7 +144,7 @@
 </head>
 <body>
     <div class="half-screen">
-        <h1>Duplas</h1>
+        <h2 class="label1">Duplas</h2>
         <div>
             <ul>
                 <!-- As duplas serão geradas dinamicamente -->

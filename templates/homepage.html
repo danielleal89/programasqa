@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>HomePage</title>
+    <style>
+        body {
+            background-color: #000080;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .custom-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #000080;
+            background-color: #FFFF00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <button onclick="location.href='divisaoregressao'">Divisão Regressões</button>
-    <button onclick="location.href='gerarduplas'">Gerar Duplas</button>
+    <button class="custom-button" onclick="location.href='divisaoregressao'">Divisão de Regressões</button>
+    <button class="custom-button" onclick="location.href='gerarduplas'">Gerar Duplas</button>
+    <button class="custom-button" onclick="location.href='centralizador'">Versão Centralizadores</button>
 </body>
 </html>

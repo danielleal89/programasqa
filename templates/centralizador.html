@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Status do Site</title>
+    <style>
+        body {
+            background-color: #000080;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .grid-item {
+            border: 5px solid yellow;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #FFFF00;
+            color: #000080;
+        }
+
+        .semaphore {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-top: auto;
+        }
+
+        .error {
+            border: 5px solid red;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<script>
+    function reloadPage() {
+        location.reload();
+    }
+    setInterval(reloadPage, 120000); // Atualiza a página a cada 2 minutos (120000 milissegundos)
+</script>
+<body>
+    <div class="grid-container">
+        {% for result in results %}
+                {% if result.json_data %}
+                    <a href="{{ result.site }}">
+                    <div class="grid-item">
+                        <h2>{{ result.name }}</h2>
+                        <h2>Versão: {{ result.json_data.versaoCentralizador.versao }}</h2>
+                    </div>
+                    </a>
+                {% else %}
+                    <a href="{{ result.site }}">
+                    <div class="error">
+                        <h2>{{ result.name }}</h2>
+                        <h2>Offline</h2>
+                    </div>
+                    </a>
+                {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+
