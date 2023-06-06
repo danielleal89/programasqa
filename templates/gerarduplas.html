@@ -3,75 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Duplas</title>
-    <style>
-        body {
-            background-color: #000080;
-        }
-
-        .half-screen {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .half-screen > div {
-            flex: 1;
-            padding: 10px;
-        }
-
-        .half-screen ul {
-            column-count: 2;
-            text-align: left;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .half-screen li {
-            break-inside: avoid-column;
-        }
-
-        .button-container {
-            margin-top: 20px;
-        }
-
-        .custom-button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #000080;
-            background-color: #FFFF00;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .custom-button:hover {
-            background-color: #0056b3;
-        }
-
-        h1 {
-            color: #FFFFFF;
-            font-size: 40px;
-        }
-
-        ul {
-            color: #FFFFFF;
-        }
-
-        .image-container {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            padding: 100px;
-        }
-
-        .label1 {
-            font-size: 35px;
-            color: #FFFFFF;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="static/estilos_gerarduplas.css">
     <script>
         function gerarDuplas() {
             var nomes = ['Andréia', 'Aline', 'Any', 'Daniel', 'Guilherme', 'Iury', 'Juliana', 'Magdiel', 'Paula', 'Radamés', 'Rayssa'];
@@ -153,8 +86,9 @@
         <div class="button-container">
             <button class="custom-button" onclick="gerarDuplas()">Gerar Duplas</button>
         </div>
+        <a href="/"><i class="fas fa-home home-icon"></i></a>
+        <a href="logout"><i class="fas fa-sign-out-alt logout-icon"></i></a>
     </div>
-
 </body>
 </html>
 

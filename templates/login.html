@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="static/estilos_login.css">
+</head>
+<body>
+  <div class="container">
+    <div class="login-box">
+      <h1>Login</h1>
+      <form action="/login" method="post">
+        <div class="form-group">
+          <label for="username">Usuário</label>
+          <input type="text" id="username" name="username" required>
+          <i class="fas fa-user"></i> <!-- Ícone de usuário -->
+        </div>
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input type="password" id="password" name="password" required>
+          <i class="fas fa-lock"></i> <!-- Ícone de senha -->
+        </div>
+        <div class="form-group">
+          <button type="submit">Entrar</button>
+        </div>
+        {% if error_message %}
+          <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+</body>
+</html>

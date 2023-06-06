@@ -3,157 +3,8 @@
 
 <head>
     <title>BB</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #000080;
-        }
-
-        .half-screen {
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            color: #FFFFFF;
-            float: left;
-            word-break: break-word;
-        }
-
-        .half-screen-direita {
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            color: #000000;
-            float: right;
-            word-break: break-word;
-        }
-
-        .half-screen > div {
-            flex: 1;
-            padding: 10px;
-            color: #FFFFFF;
-            float: left;
-        }
-
-        .half-screen-direita > div {
-            flex: 1;
-            padding: 10px;
-            color: #FFFFFF;
-            float: right;
-        }
-
-        .half-screen ul {
-            text-align: left;
-            font-size: 20px;
-            font-weight: bold;
-            color: #FFFFFF;
-            float: left;
-        }
-
-        .half-screen-direita ul {
-            text-align: left;
-            font-size: 20px;
-            font-weight: bold;
-            color: #FFFFFF;
-            float: right;
-        }
-
-        .half-screen li {
-            break-inside: avoid-column;
-        }
-
-        #divisaoSuperior {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 332px;
-            height: 85px;
-            background-color: #cor2;
-            margin-bottom: 20px;
-        }
-
-        .label1 {
-            font-size: 35px;
-            color: #FFFFFF;
-        }
-
-        .label2 {
-            font-size: 13px;
-            color: #corLetras2;
-        }
-
-        #android {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            background-color: #cor;
-            font-size: 20px;
-            color: #FFFFFF;
-            margin-bottom: 20px;
-        }
-
-        #ios {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            background-color: #cor;
-            font-size: 20px;
-            color: #FFFFFF;
-        }
-
-        #regressoes {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            background-color: #cor;
-            font-size: 20px;
-            color: #FFFFFF;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 10px;
-        }
-
-        .grid-regressoes {
-            grid-template-columns: 1fr 1fr;
-            font-size: 20px;
-            color: #FFFFFF;
-        }
-
-        .custom-button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #000080;
-            background-color: #FFFF00;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        .custom-button2 {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #000080;
-            background-color: #FFFF00;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-            margin-right: 40px;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="static/estilos_divisaoregressao.css">
     <script>
         function selecionarTodos() {
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -590,6 +441,8 @@
                 <!-- Insere o analista e os menus de regressão -->
             </ul>
         </div>
+        <a href="/"><i class="fas fa-home home-icon"></i></a>
+        <a href="logout"><i class="fas fa-sign-out-alt logout-icon"></i></a>
     </div>
 </body>
 

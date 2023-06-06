@@ -1,0 +1,38 @@
+body {
+    background-color: #000080;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000080;
+    background-color: #FFFF00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.home-icon {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: #FFFF00;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.logout-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #FFFF00;
+    font-size: 24px;
+    cursor: pointer;
+}

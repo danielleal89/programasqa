@@ -3,32 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>HomePage</title>
-    <style>
-        body {
-            background-color: #000080;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .custom-button {
-            display: inline-block;
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #000080;
-            background-color: #FFFF00;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="static/estilos_homepage.css">
 </head>
 <body>
+    <a href="/"><i class="fas fa-home home-icon"></i></a>
+    <a href="logout"><i class="fas fa-sign-out-alt logout-icon"></i></a>
     <button class="custom-button" onclick="location.href='divisaoregressao'">Divisão de Regressões</button>
     <button class="custom-button" onclick="location.href='gerarduplas'">Gerar Duplas</button>
-    <button class="custom-button" onclick="location.href='centralizador'">Versão Centralizadores</button>
+    <button class="custom-button" onclick="location.href='centralizador'">Versões Centralizadores</button>
 </body>
 </html>

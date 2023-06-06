@@ -2,55 +2,19 @@
 <html>
 <head>
     <title>Status do Site</title>
-    <style>
-        body {
-            background-color: #000080;
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            gap: 20px;
-            text-align: center;
-        }
-
-        .grid-item {
-            border: 5px solid yellow;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #FFFF00;
-            color: #000080;
-        }
-
-        .semaphore {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            margin-top: auto;
-        }
-
-        .error {
-            border: 5px solid red;
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: red;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="static/estilos_centralizador.css">
 </head>
 <script>
     function reloadPage() {
         location.reload();
     }
-    setInterval(reloadPage, 120000); // Atualiza a página a cada 2 minutos (120000 milissegundos)
+    setInterval(reloadPage, 120000); // Atualiza a página a cada 2 minutos
 </script>
 <body>
     <div class="grid-container">
+        <a href="/"><i class="fas fa-home home-icon"></i></a>
+        <a href="logout"><i class="fas fa-sign-out-alt logout-icon"></i></a> <br>
         {% for result in results %}
                 {% if result.json_data %}
                     <a href="{{ result.site }}">
@@ -68,6 +32,11 @@
                     </a>
                 {% endif %}
         {% endfor %}
+    </div>
+    <div class="legend-container">
+        <h3>Legenda:</h3>
+        <div class="online"></div> <span style="font-size: 22px;">Online</span>&nbsp;&nbsp;&nbsp;
+        <div class="offline"></div> <span style="font-size: 22px;">Offline</span>
     </div>
 </body>
 </html>
