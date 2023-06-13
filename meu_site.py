@@ -87,9 +87,7 @@ def is_user_authenticated():
 
 @app.route("/logout")
 def logout():
-    # Limpar as informações de autenticação do usuário
-    session.clear()
-    # Redirecionar para a página de login
+    session.clear() #Limpa informações de autenticação do usuário
     return redirect("/login")
 
 if __name__ == "__main__":

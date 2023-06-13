@@ -10,5 +10,6 @@
     <file url="file://$PROJECT_DIR$/templates/gerarduplas.html" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/templates/homepage.html" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/templates/homepage1.html" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/templates/kanban.html" charset="windows-1252" />
   </component>
 </project>
