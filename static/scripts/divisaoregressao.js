@@ -16,20 +16,22 @@ function selecionarTodos() {
     }
 }
 
-analistasAndroid = {"Andréia": 10, "Any": 20, "Daniel": 30, "Iury": 40, "Juliana": 50, "Radamés": 60};
-analistasIOS = {"Aline": 10, "Guilherme": 20, "Lorena": 30, "Magdiel": 40, "Paula": 50, "Rayssa": 60};
-listaRegressaoApp = {10: "Menu Parte 1 + Área não logada sem conta cadastrada + Área não logada PJ + Perfil PJ",
-                      20: "Menu Parte 2 + Link inteligente/leitor de PDF + Onboarding abrir conta",
-                      30: "Menu Parte 3 + Área não logada com conta cadastrada + Home PJ",
-                      40: "Menu Parte 4 + Perfil + Notificações",
-                      50: "Home Parte 1 + Instalação/Atualização",
-                      60: "Home Parte 2 + Logins/Logins PJ + Menu PJ"};
+analistasAndroid = {"Andréia": 10, "Any": 20, "Alexandre": 30, "Juliana": 40, "Radamés": 50};
+analistasIOS = {"Aline": 10, "Daniel": 20, "Guilherme": 30, "Lorena": 40, "Magdiel": 50};
+
+listaRegressaoApp = {10: "Menu Parte 1 + Logins/Logins PJ + Onboarding abrir conta",
+                     20: "Menu Parte 2 + Menu PJ + Instalação/Atualização",
+                     30: "Menu Parte 3 + Home PJ + Perfil PJ",
+                     40: "Menu Parte 4 + Área não logada sem conta cadastrada + Área não logada com conta cadastrada + Área não logada PJ",
+                     50: "Home + Perfil + Link inteligente/leitor de PDF"};
+
 listaRegressaoCentralizadorPF = {10: "Menu Parte 1 + Área não logada sem conta cadastrada",
                                  20: "Menu Parte 2 + Onboarding abrir conta",
                                  30: "Menu Parte 3 + Área não logada com conta cadastrada",
                                  40: "Menu Parte 4 + Perfil",
                                  50: "Home Parte 1 + Instalação/atualização",
                                  60: "Home Parte 2 + Logins + Link inteligente/leitor de PDF + Notificações"};
+
 listaRegressaoCentralizadorPJ = {10: "Login",
                                  20: "Área não logada",
                                  30: "Home",
@@ -70,12 +72,9 @@ function gerarApp() {
                     } else if (contAndroid == 4) {
                         listaCompletaAndroid['    ?????'.padEnd(contAndroid, ' ')] = listaRegressaoApp[valor];
                         contAndroid +=1;
-                    } else if (contAndroid == 5) {
-                        listaCompletaAndroid['     ?????'.padEnd(contAndroid, ' ')] = listaRegressaoApp[valor];
-                        contAndroid +=1;
                     }
                 }
-                if (parseInt(analistasAndroid[nome]) === 60) {
+                if (parseInt(analistasAndroid[nome]) === 50) {
                     listaFuturaAndroid[nome] = 10;
                 } else {
                     listaFuturaAndroid[nome] = parseInt(analistasAndroid[nome]) + 10;
@@ -103,12 +102,9 @@ function gerarApp() {
                     } else if (contIOS == 4) {
                         listaCompletaIOS['    ?????'.padEnd(contIOS, ' ')] = listaRegressaoApp[valor];
                         contIOS += 1;
-                    } else if (contIOS == 5) {
-                        listaCompletaIOS['     ?????'.padEnd(contIOS, ' ')] = listaRegressaoApp[valor];
-                        contIOS += 1;
                     }
                 }
-                if (parseInt(analistasIOS[nome]) === 60) {
+                if (parseInt(analistasIOS[nome]) === 50) {
                     listaFuturaIOS[nome] = 10;
                 } else {
                     listaFuturaIOS[nome] = parseInt(analistasIOS[nome]) + 10;
@@ -142,6 +138,10 @@ function gerarApp() {
     analistasIOS = listaFuturaIOS;
     listaFuturaIOS = {};
     listaCompletaIOS = {};
+
+    var h4android = document.createElement('h4');
+    h4android.innerText = 'Aline e Lorena: Notificações - Android e iOS';
+    ulElement.appendChild(h4android);
 }
 
 function gerarCentralizador() {
@@ -351,7 +351,7 @@ function rodarRegressaoApp() {
     var h3Element = document.createElement('h3');
     var h4Element = document.createElement('h3');
     var h5Element = document.createElement('h3');
-    var h6Element = document.createElement('h3');
+    var h7Element = document.createElement('h3');
 
     var rodada = 'º Rodada - Regressão App\n\nRegressão Completa do App\n\nVersão do App: iOS x.xx.x.x e Android x.xx.x.x\n\nRegistrar no Qase:\nLink: https://app.qase.io/runPF\nUsuário: regressaopf@gmail.com\nSenha: l@b123321\n\nRL da carga: A definir\nPrazo: A definir';
     h1Element.innerText = contador + rodada;
@@ -372,10 +372,6 @@ function rodarRegressaoApp() {
     contador += 1;
     h5Element.innerText = contador + rodada;
     ulElement.appendChild(h5Element);
-    gerarApp();
-    contador += 1;
-    h6Element.innerText = contador + rodada;
-    ulElement.appendChild(h6Element);
     gerarApp();
 }
 
@@ -466,25 +462,23 @@ function executar() {
         listaAtivosIOS = [];
         if (andreia.checked) { listaAtivosAndroid.push("Andréia") }
         if (ani.checked) { listaAtivosAndroid.push("Any") }
-        if (daniel.checked) { listaAtivosAndroid.push("Daniel") }
-        if (iury.checked) { listaAtivosAndroid.push("Iury") }
+        if (alexandre.checked) { listaAtivosAndroid.push("Alexandre") }
         if (juliana.checked) { listaAtivosAndroid.push("Juliana") }
         if (radames.checked) { listaAtivosAndroid.push("Radamés") }
         if (aline.checked) { listaAtivosIOS.push("Aline") }
+        if (daniel.checked) { listaAtivosIOS.push("Daniel") }
         if (guilherme.checked) { listaAtivosIOS.push("Guilherme") }
         if (lorena.checked) { listaAtivosIOS.push("Lorena") }
         if (magdiel.checked) { listaAtivosIOS.push("Magdiel") }
-        if (paula.checked) { listaAtivosIOS.push("Paula") }
-        if (rayssa.checked) { listaAtivosIOS.push("Rayssa") }
 
         if (regressaoApp.checked) {
             rodarRegressaoApp();
         }
-        if (centralizadorPF.checked) {
-            rodarCentralizadorPF();
-        }
-        if (centralizadorPJ.checked) {
-            rodarCentralizadorPJ();
-        }
+//        if (centralizadorPF.checked) {
+//            rodarCentralizadorPF();
+//        }
+//        if (centralizadorPJ.checked) {
+//            rodarCentralizadorPJ();
+//        }
     }
 }
