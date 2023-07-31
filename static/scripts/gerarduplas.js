@@ -1,6 +1,6 @@
 function gerarDuplas() {
-    var nomes = ['Andréia', 'Aline', 'Any', 'Daniel', 'Guilherme', 'Iury', 'Juliana', 'Magdiel', 'Paula', 'Radamés', 'Rayssa'];
-    var nomes2 = ['Andréia', 'Aline', 'Any', 'Daniel', 'Guilherme', 'Iury', 'Juliana', 'Magdiel', 'Paula', 'Radamés', 'Rayssa'];
+    var nomes = ['Andréia', 'Aline', 'Any', 'Alexandre', 'Daniel', 'Guilherme', 'Iury', 'Juliana', 'Magdiel', 'Paula', 'Radamés', 'Rayssa'];
+    var nomes2 = ['Andréia', 'Aline', 'Any', 'Alexandre', 'Daniel', 'Guilherme', 'Iury', 'Juliana', 'Magdiel', 'Paula', 'Radamés', 'Rayssa'];
     var listaFinal = [];
 
     var preantepenultimoE = '';
