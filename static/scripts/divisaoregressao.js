@@ -25,19 +25,17 @@ listaRegressaoApp = {10: "Menu Parte 1 + Logins/Logins PJ + Onboarding abrir con
                      40: "Menu Parte 4 + Área não logada sem conta cadastrada + Área não logada com conta cadastrada + Área não logada PJ",
                      50: "Home + Perfil + Link inteligente/leitor de PDF"};
 
-listaRegressaoCentralizadorPF = {10: "Menu Parte 1 + Área não logada sem conta cadastrada",
-                                 20: "Menu Parte 2 + Onboarding abrir conta",
+listaRegressaoCentralizadorPF = {10: "Menu Parte 1 + Logins + Onboarding abrir conta",
+                                 20: "Menu Parte 2 + Área não logada sem conta cadastrada",
                                  30: "Menu Parte 3 + Área não logada com conta cadastrada",
-                                 40: "Menu Parte 4 + Perfil",
-                                 50: "Home Parte 1 + Instalação/atualização",
-                                 60: "Home Parte 2 + Logins + Link inteligente/leitor de PDF + Notificações"};
+                                 40: "Menu Parte 4 + Instalação/atualização + Link inteligente/leitor de PDF",
+                                 50: "Home + Perfil"};
 
-listaRegressaoCentralizadorPJ = {10: "Login",
-                                 20: "Área não logada",
-                                 30: "Home",
-                                 40: "Perfil",
-                                 50: "Menu Parte 1",
-                                 60: "Menu Parte 2"};
+listaRegressaoCentralizadorPJ = {10: "Login + Área não logada",
+                                 20: "Home",
+                                 30: "Perfil",
+                                 40: "Menu Parte 1",
+                                 50: "Menu Parte 2"};
 
 listaAtivosAndroid = [];
 listaAtivosIOS = [];
@@ -168,12 +166,9 @@ function gerarCentralizador() {
                     } else if (contCentralizadorAndroid == 4) {
                         listaCompletaCentralizadorAndroid['    ?????'.padEnd(contCentralizadorAndroid, ' ')] = listaRegressaoCentralizadorPF[valor];
                         contCentralizadorAndroid +=1;
-                    } else if (contCentralizadorAndroid == 5) {
-                        listaCompletaCentralizadorAndroid['     ?????'.padEnd(contCentralizadorAndroid, ' ')] = listaRegressaoCentralizadorPF[valor];
-                        contCentralizadorAndroid +=1;
                     }
                 }
-                if (parseInt(analistasAndroid[nome]) === 60) {
+                if (parseInt(analistasAndroid[nome]) === 50) {
                     listaFuturaAndroid[nome] = 10;
                 } else {
                     listaFuturaAndroid[nome] = parseInt(analistasAndroid[nome]) + 10;
@@ -201,12 +196,9 @@ function gerarCentralizador() {
                     } else if (contCentralizadorIOS == 4) {
                         listaCompletaCentralizadorIOS['    ?????'.padEnd(contCentralizadorIOS, ' ')] = listaRegressaoCentralizadorPF[valor];
                         contCentralizadorIOS += 1;
-                    } else if (contCentralizadorIOS == 5) {
-                        listaCompletaCentralizadorIOS['     ?????'.padEnd(contCentralizadorIOS, ' ')] = listaRegressaoCentralizadorPF[valor];
-                        contCentralizadorIOS += 1;
                     }
                 }
-                if (parseInt(analistasIOS[nome]) === 60) {
+                if (parseInt(analistasIOS[nome]) === 50) {
                     listaFuturaIOS[nome] = 10;
                 } else {
                     listaFuturaIOS[nome] = parseInt(analistasIOS[nome]) + 10;
@@ -265,12 +257,9 @@ function gerarCentralizadorPJ() {
                     } else if (contCentralizadorAndroid == 4) {
                         listaCompletaCentralizadorAndroid['    ?????'.padEnd(contCentralizadorAndroid, ' ')] = listaRegressaoCentralizadorPJ[valor];
                         contCentralizadorAndroid +=1;
-                    } else if (contCentralizadorAndroid == 5) {
-                        listaCompletaCentralizadorAndroid['     ?????'.padEnd(contCentralizadorAndroid, ' ')] = listaRegressaoCentralizadorPJ[valor];
-                        contCentralizadorAndroid +=1;
                     }
                 }
-                if (parseInt(analistasAndroid[nome]) === 60) {
+                if (parseInt(analistasAndroid[nome]) === 50) {
                     listaFuturaAndroid[nome] = 10;
                 } else {
                     listaFuturaAndroid[nome] = parseInt(analistasAndroid[nome]) + 10;
@@ -298,12 +287,9 @@ function gerarCentralizadorPJ() {
                     } else if (contCentralizadorIOS == 4) {
                         listaCompletaCentralizadorIOS['    ?????'.padEnd(contCentralizadorIOS, ' ')] = listaRegressaoCentralizadorPJ[valor];
                         contCentralizadorIOS += 1;
-                    } else if (contCentralizadorIOS == 5) {
-                        listaCompletaCentralizadorIOS['     ?????'.padEnd(contCentralizadorIOS, ' ')] = listaRegressaoCentralizadorPJ[valor];
-                        contCentralizadorIOS += 1;
                     }
                 }
-                if (parseInt(analistasIOS[nome]) === 60) {
+                if (parseInt(analistasIOS[nome]) === 50) {
                     listaFuturaIOS[nome] = 10;
                 } else {
                     listaFuturaIOS[nome] = parseInt(analistasIOS[nome]) + 10;
@@ -383,31 +369,28 @@ function rodarCentralizadorPF() {
     var h3ElementD = document.createElement('h3');
     var h4ElementD = document.createElement('h3');
     var h5ElementD = document.createElement('h3');
-    var h6ElementD = document.createElement('h3');
 
-    h1ElementD.innerText = contadorD + 'º Rodada - Regressão Centralizador PF';
+    var rodada = 'º Rodada - Regressão Centralizador PF\n\nRegressão Completa do Centralizador PF\n\nVersão do App: iOS x.xx.x.x e Android x.xx.x.x\n\nVersão do Centralizador PF: x.xxx.x.xxx\n\nRegistrar no Qase:\nLink: https://app.qase.io/runPF\nUsuário: regressaopf@gmail.com\nSenha: l@b123321\n\nRL da carga: A definir\nPrazo: A definir';
+    h1ElementD.innerText = contadorD + rodada;
     ulElementD.appendChild(h1ElementD);
     gerarCentralizador();
     contadorD += 1;
-    h2ElementD.innerText = contadorD + 'º Rodada - Regressão Centralizador PF';
+    h2ElementD.innerText = contadorD + rodada;
     ulElementD.appendChild(h2ElementD);
     gerarCentralizador();
     contadorD += 1;
-    h3ElementD.innerText = contadorD + 'º Rodada - Regressão Centralizador PF';
+    h3ElementD.innerText = contadorD + rodada;
     ulElementD.appendChild(h3ElementD);
     gerarCentralizador();
     contadorD += 1;
-    h4ElementD.innerText = contadorD + 'º Rodada - Regressão Centralizador PF';
+    h4ElementD.innerText = contadorD + rodada;
     ulElementD.appendChild(h4ElementD);
     gerarCentralizador();
     contadorD += 1;
-    h5ElementD.innerText = contadorD + 'º Rodada - Regressão Centralizador PF';
+    h5ElementD.innerText = contadorD + rodada;
     ulElementD.appendChild(h5ElementD);
     gerarCentralizador();
     contadorD += 1;
-    h6ElementD.innerText = contadorD + 'º Rodada - Regressão Centralizador PF';
-    ulElementD.appendChild(h6ElementD);
-    gerarCentralizador();
 }
 
 function rodarCentralizadorPJ() {
@@ -418,31 +401,28 @@ function rodarCentralizadorPJ() {
     var h3ElementPJ = document.createElement('h3');
     var h4ElementPJ = document.createElement('h3');
     var h5ElementPJ = document.createElement('h3');
-    var h6ElementPJ = document.createElement('h3');
 
-    h1ElementPJ.innerText = contadorPJ + 'º Rodada - Regressão Centralizador PJ';
+    var rodada = 'º Rodada - Regressão Centralizador PJ\n\nRegressão Completa do Centralizador PJ\n\nVersão do App: iOS x.xx.x.x e Android x.xx.x.x\n\nVersão do Centralizador PJ: x.xxx.x.xxx\n\nRegistrar no Qase:\nLink: https://app.qase.io/runPJ\nUsuário: regressaopj@gmail.com\nSenha: l@b123321\n\nRL da carga: A definir\nPrazo: A definir';
+    h1ElementPJ.innerText = contadorPJ + rodada;
     ulElementPJ.appendChild(h1ElementPJ);
     gerarCentralizadorPJ();
     contadorPJ += 1;
-    h2ElementPJ.innerText = contadorPJ + 'º Rodada - Regressão Centralizador PJ';
+    h2ElementPJ.innerText = contadorPJ + rodada;
     ulElementPJ.appendChild(h2ElementPJ);
     gerarCentralizadorPJ();
     contadorPJ += 1;
-    h3ElementPJ.innerText = contadorPJ + 'º Rodada - Regressão Centralizador PJ';
+    h3ElementPJ.innerText = contadorPJ + rodada;
     ulElementPJ.appendChild(h3ElementPJ);
     gerarCentralizadorPJ();
     contadorPJ += 1;
-    h4ElementPJ.innerText = contadorPJ + 'º Rodada - Regressão Centralizador PJ';
+    h4ElementPJ.innerText = contadorPJ + rodada;
     ulElementPJ.appendChild(h4ElementPJ);
     gerarCentralizadorPJ();
     contadorPJ += 1;
-    h5ElementPJ.innerText = contadorPJ + 'º Rodada - Regressão Centralizador PJ';
+    h5ElementPJ.innerText = contadorPJ + rodada;
     ulElementPJ.appendChild(h5ElementPJ);
     gerarCentralizadorPJ();
     contadorPJ += 1;
-    h6ElementPJ.innerText = contadorPJ + 'º Rodada - Regressão Centralizador PJ';
-    ulElementPJ.appendChild(h6ElementPJ);
-    gerarCentralizadorPJ();
 }
 
 function executar() {
@@ -474,11 +454,11 @@ function executar() {
         if (regressaoApp.checked) {
             rodarRegressaoApp();
         }
-//        if (centralizadorPF.checked) {
-//            rodarCentralizadorPF();
-//        }
-//        if (centralizadorPJ.checked) {
-//            rodarCentralizadorPJ();
-//        }
+        if (centralizadorPF.checked) {
+            rodarCentralizadorPF();
+        }
+        if (centralizadorPJ.checked) {
+            rodarCentralizadorPJ();
+        }
     }
 }
