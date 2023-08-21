@@ -10,10 +10,32 @@ valid_username = "admin"
 valid_password = "senha1234"
 
 @app.route("/")
+def root():
+    return redirect("/home")
+
+@app.route("/home")
 def homepage():
     if not is_user_authenticated():
         return redirect("/login")
     return render_template("homepage.html")
+
+@app.route("/android")
+def android():
+    if not is_user_authenticated():
+        return redirect("/login")
+    return render_template("android.html")
+
+@app.route("/ios")
+def ios():
+    if not is_user_authenticated():
+        return redirect("/login")
+    return render_template("ios.html")
+
+@app.route("/manual")
+def manual():
+    if not is_user_authenticated():
+        return redirect("/login")
+    return render_template("manual.html")
 
 @app.route("/divisaoregressao")
 def divisaoregressoes():

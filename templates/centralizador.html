@@ -13,8 +13,6 @@
 </script>
 <body>
     <div class="grid-container">
-        <a href="/"><i class="fas fa-home home-icon"></i></a>
-        <a href="logout"><i class="fas fa-sign-out-alt logout-icon"></i></a> <br>
         {% for result in results %}
                 {% if result.json_data %}
                     <a href="{{ result.site }}">
@@ -38,6 +36,8 @@
         <div class="online"></div> <span style="font-size: 22px;">Online</span>&nbsp;&nbsp;&nbsp;
         <div class="offline"></div> <span style="font-size: 22px;">Offline</span>
     </div>
+
+    {% extends "base.html" %}
 </body>
 </html>
 
