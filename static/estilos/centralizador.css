@@ -27,6 +27,8 @@ body {
     align-items: center;
     background-color: gray;
     color: white;
+    height: 105px; /* Tamanho quadro de cada centralizador */
+    margin-top: 20px;
 }
 
 /* Legenda */
