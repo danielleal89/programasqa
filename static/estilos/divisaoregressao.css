@@ -93,6 +93,13 @@ body {
     grid-gap: 10px;
 }
 
+.grid-container2 {
+    display: grid;
+    grid-template-columns: 1fr 0fr;
+    color: #FFFFFF;
+    font-size: 15px;
+}
+
 .grid-regressoes {
     grid-template-columns: 1fr 1fr;
     font-size: 20px;

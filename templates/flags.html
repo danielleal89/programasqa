@@ -2,25 +2,32 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Gerar Duplas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="static/estilos/gerarduplas.css">
-    <script src="{{ url_for('static', filename='scripts/gerarduplas.js') }}"></script>
+    <link rel="stylesheet" href="static/estilos/divisaoregressao.css">
 </head>
 <body>
-    <h1>Resultado da Requisição</h1>
+    <button class="custom-button" onclick="location.href='flags'">Buscar</button>
+    <div class="grid-container2">
 
-    {% if result %}
-        <p>Success: {{ result.success }}</p>
-        {% if result.success %}
-            <p>Dados: {{ result.data }}</p>
-        {% else %}
-            <p>Erro: {{ result.error }}</p>
+        {% if results %}
+            {% for result in results %}
+                {% if result.json_data %}
+                    {% if result.response == 200 %}
+                        {% for category, parameters in result.json_data['response']['parametros'].items() %}
+                            <div class="grid-item">
+                                <h3>{{ category }} : {{ parameters }}</h3>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="error">
+                            <h2>Erro ao realizar a requisição. Tente novamente!!</h2>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
         {% endif %}
-    {% endif %}
+    </div>
 
-    <form method="post" action="/">
-        <button type="submit">Enviar Requisição</button>
-    </form>
+    {% extends "base.html" %}
 </body>
 </html>
