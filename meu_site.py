@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect, request
+from flask import Flask, render_template, session, redirect, request, jsonify
 import json
 import requests
 
@@ -48,6 +48,34 @@ def gerarduplas():
     if not is_user_authenticated():
         return redirect("/login")
     return render_template("gerarduplas.html")
+
+@app.route("/flags", methods=['GET', 'POST'])
+def flags():
+    request.method = "POST"
+    if request.method == 'POST':
+        # Dados a serem enviados no corpo da solicitação POST
+        payload = {
+            "cc_pf": {
+                "agencia": 5517,
+                "conta": 51519,
+                "senha": "88888888",
+                "titularidade": 1
+            }
+        }
+
+        # URL de destino para a solicitação POST
+        url = "https://mobileteste.hm.bb.com.br/cfe-mov/api/v1/parametros/MOV_PESSOA_FISICA_AGENCIA_CONTA/todos"
+
+        # Realiza a solicitação POST usando a biblioteca 'requests'
+        response = requests.post(url, json=payload)
+
+        # Verifica se a solicitação foi bem-sucedida (código de status 200)
+        if response.status_code == 200:
+            return jsonify({"success": True, "data": response.json()})
+        else:
+            return jsonify({"success": False, "error": response.text}), response.status_code
+
+    return render_template('flags.html')
 
 @app.route("/centralizador")
 def check_website_status():

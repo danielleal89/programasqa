@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerar Duplas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="static/estilos/gerarduplas.css">
+    <script src="{{ url_for('static', filename='scripts/gerarduplas.js') }}"></script>
+</head>
+<body>
+    <h1>Resultado da Requisição</h1>
+
+    {% if result %}
+        <p>Success: {{ result.success }}</p>
+        {% if result.success %}
+            <p>Dados: {{ result.data }}</p>
+        {% else %}
+            <p>Erro: {{ result.error }}</p>
+        {% endif %}
+    {% endif %}
+
+    <form method="post" action="/">
+        <button type="submit">Enviar Requisição</button>
+    </form>
+</body>
+</html>
