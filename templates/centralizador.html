@@ -12,27 +12,32 @@
     setInterval(reloadPage, 120000); // Atualiza a página a cada 2 minutos
 </script>
 <body>
-    {% if results %}
-            {% for result in results %}
-                {% if result.json_data %}
-                    {% if result.response.get('status') == 200 %}
-                        {% for category, parameters in result.json_data['response']['parametros'].items() %}
-                            <div class="grid-item">
-                                <h3>{{ category }}: {{ parameters }}</h3>
-                            </div>
-                        {% endfor %}
-                    {% else %}
-                        <div class="error">
-                            <h2>Erro ao realizar a requisição</h2>
-                        </div>
-                    {% endif %}
-                {% else %}
-                    <div class="error">
-                        <h2>Offline</h2>
+     <div class="grid-container">
+         {% for result in results %}
+            {% if result.json_data %}
+                <a href="{{ result.site }}">
+                    <div class="grid-item">
+                        <h2>{{ result.name }}</h2>
+                        <h2>Versão: {{ result.json_data.versaoCentralizador.versao }}</h2>
                     </div>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+                    </a>
+            {% else %}
+                <a href="{{ result.site }}">
+                <div class="error">
+                    <h2>{{ result.name }}</h2>
+                    <h2>Offline</h2>
+                </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="legend-container">
+        <h3>Legenda:</h3>
+        <div class="online"></div> <span style="font-size: 22px;">Online</span>&nbsp;&nbsp;&nbsp;
+        <div class="offline"></div> <span style="font-size: 22px;">Offline</span>
+    </div>
+
+    {% extends "base.html" %}
 </body>
 </html>
 
