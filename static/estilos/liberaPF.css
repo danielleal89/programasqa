@@ -1,0 +1,63 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000080;
+}
+
+.grid-qmassa {
+    display: grid;
+    grid-template-columns: 1fr 0fr;
+    color: #FFFFFF;
+    font-size: 15px;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.custom-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000080;
+    background-color: #FFFF00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.custom-input {
+    width: 200px;
+    height: 30px;
+}
+
+.input-liberapf {
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+    margin-bottom: 10px;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #FFFF00;
+}
+
+.input-liberapf1 {
+    margin-top: 200px;
+    margin-bottom: 10px;
+}
+
+.input-liberapf1 label {
+    margin-right: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFFF00;
+}
+
+.input-liberapf2 label {
+    margin-right: 27px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFFF00;
+}

@@ -1,6 +1,6 @@
 function gerarDuplas() {
-    var nomes = ['Andréia', 'Aline', 'Any', 'Alexandre', 'Daniel', 'Guilherme', 'Iury', 'Juliana', 'Magdiel', 'Paula', 'Radamés', 'Rayssa'];
-    var nomes2 = ['Andréia', 'Aline', 'Any', 'Alexandre', 'Daniel', 'Guilherme', 'Iury', 'Juliana', 'Magdiel', 'Paula', 'Radamés', 'Rayssa'];
+    var nomes = ['Andréia', 'Aline', 'Any', 'Daniel', 'Guilherme', 'Iury', 'Juliana', 'Magdiel', 'Mateus', 'Paula', 'Radamés', 'Ynaiana'];
+    var nomes2 = ['Andréia', 'Aline', 'Any', 'Daniel', 'Guilherme', 'Iury', 'Juliana', 'Magdiel', 'Mateus', 'Paula', 'Radamés', 'Ynaiana'];
     var listaFinal = [];
 
     var preantepenultimoE = '';
@@ -19,7 +19,7 @@ function gerarDuplas() {
         var analistas = `${nomeE}/${nomeD}`;
         var analistasInvertidos = `${nomeD}/${nomeE}`;
 
-        if (analistas !== 'Andréia/Juliana' && analistas !== 'Juliana/Andréia' &&
+        if (analistas !== 'Mateus/Ynaiana' && analistas !== 'Ynaiana/Mateus' &&
             analistas !== 'Any/Iury' && analistas !== 'Iury/Any') {
             if (!listaFinal.includes(analistas)) {
                 if (nomeE !== nomeD) {

@@ -15,5 +15,10 @@
     <file url="file://$PROJECT_DIR$/templates/homepage.html" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/templates/homepage1.html" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/templates/kanban.html" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/templates/liberaPF.html" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/templates/liberaPJ.html" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/templates/qmassaPF.html" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/templates/qmassaPJ.html" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/templates/seu.html" charset="windows-1252" />
   </component>
 </project>

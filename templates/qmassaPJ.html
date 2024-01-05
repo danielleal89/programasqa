@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="static/estilos/liberaPF.css">
+</head>
+<body>
+    <div class="grid-qmassa">
+        {% if results %}
+            {% for result in results %}
+                {% if result.response == 417 %}
+                    <h2>{{ result.json_data.errors[0].message }}</h2>
+                {% elif result.response == 201 %}
+                    <h2>{{ result.json_data.message }}</h2>
+                    {% for Dispositivo in result.json_data.data %}
+                        <p></p>
+                        <h3>{{ Dispositivo }}</h3>
+                    {% endfor %}
+                {% elif result.response == 400 %}
+                    <h2>Falha na requisição, tente novamente!!!</h2>
+                {% elif result.response == 100 %}
+                    <h2>PARA LIBERAÇÃO CONECTE A VPN!!!</h2>
+                {% else %}
+                    <h2>Erro (Código {{ result.response }})</h2>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+    <button class="custom-button" onclick="location.href='/liberaPJ'">Nova Liberação</button>
+
+    {% extends "base.html" %}
+</body>
+</html>

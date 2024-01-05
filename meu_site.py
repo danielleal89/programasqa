@@ -110,6 +110,102 @@ def check_website_status():
             })
     return render_template('centralizador.html', results=results)
 
+@app.route("/liberaPF")
+def liberaPF():
+    if not is_user_authenticated():
+        return redirect("/login")
+    return render_template("liberaPF.html")
+
+@app.route("/qmassaPF", methods=['GET', 'POST'])
+def qmassaPF():
+    if not is_user_authenticated():
+        return redirect("/login")
+    else:
+        try:
+            agencia = request.args.get('agencia', type=int)
+            conta = request.args.get('conta', type=int)
+
+            request.method = "POST"
+            results = []
+            if request.method == 'POST':
+                payload = {
+                    "agencia": agencia,
+                    "conta": conta
+                }
+                url = "https://qualidade-massa-de-dados-api.ath.servicos.bb.com.br/v2/sr018/liberar-celular-pf?ambiente=HM"
+
+                headers = {
+                    'x-qualidade-projeto-online': 'mobile-pj-ios',
+                    'x-qualidade-script-online': 'script-ato',
+                    'x-qualidade-uor-online': '514417',
+                    'qmassa-token': '/ra0nEfWjJ496NUEChQKUsI0tuo6dcNEKZSr/WmPgzSetadB5JOz8VR4oDPsh0uQzih+wwor22164dsSl9TttFcUyKBFGcYEV79u51stTxOgvIzJERAPebZ9EZblOMkuSe3lMgcKaHvocJIMDWK9dMbp2tSXtrjml99+kc0OnVbvL/2vVKb6/J04SKnjlqFcb3SLm/XK17njFHK0vT0SyTcBG6Mc2rWS6oDscCvhtztYo1eJZt60JXsBnLKNMft6XhEP6W47pzzFPzw/KZuhKP+QDWpjq+B014n3AdYzZCk='
+                }
+
+                response = requests.post(url, json=payload, headers=headers)
+                results = []
+
+                response_content = response.text
+                json_data = json.loads(response_content)
+
+                results.append({
+                    "json_data": json_data,
+                    "response": response.status_code
+                })
+        except:
+            results = []
+            results.append({
+                "response": 100
+            })
+
+    return render_template('qmassaPF.html', results=results)
+
+@app.route("/liberaPJ")
+def liberaPJ():
+    if not is_user_authenticated():
+        return redirect("/login")
+    return render_template("liberaPJ.html")
+
+@app.route("/qmassaPJ", methods=['GET', 'POST'])
+def qmassaPJ():
+    if not is_user_authenticated():
+        return redirect("/login")
+    else:
+        try:
+            chave = request.args.get('chave')
+
+            request.method = "POST"
+            results = []
+            if request.method == 'POST':
+                payload = {
+                    "chaveJ": chave
+                }
+                url = "https://qualidade-massa-de-dados-api.ath.servicos.bb.com.br/v2/sr023/liberar-mobile-pj?ambiente=HM"
+
+                headers = {
+                    'x-qualidade-projeto-online': 'mobile-pj-ios',
+                    'x-qualidade-script-online': 'script-ato',
+                    'x-qualidade-uor-online': '514417',
+                    'qmassa-token': '/ra0nEfWjJ496NUEChQKUsI0tuo6dcNEKZSr/WmPgzSetadB5JOz8VR4oDPsh0uQzih+wwor22164dsSl9TttFcUyKBFGcYEV79u51stTxOgvIzJERAPebZ9EZblOMkuSe3lMgcKaHvocJIMDWK9dMbp2tSXtrjml99+kc0OnVbvL/2vVKb6/J04SKnjlqFcb3SLm/XK17njFHK0vT0SyTcBG6Mc2rWS6oDscCvhtztYo1eJZt60JXsBnLKNMft6XhEP6W47pzzFPzw/KZuhKP+QDWpjq+B014n3AdYzZCk='
+                }
+
+                response = requests.post(url, json=payload, headers=headers)
+                results = []
+
+                response_content = response.text
+                json_data = json.loads(response_content)
+
+                results.append({
+                    "json_data": json_data,
+                    "response": response.status_code
+                })
+        except:
+            results = []
+            results.append({
+                "response": 100
+            })
+
+    return render_template('qmassaPJ.html', results=results)
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if is_user_authenticated():
