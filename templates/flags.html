@@ -13,7 +13,8 @@
             {% for result in results %}
                 {% if result.json_data %}
                     {% if result.response == 200 %}
-                        {% for category, parameters in result.json_data['response']['parametros'].items() %}
+                        {% set sorted_categories = result.json_data['response']['parametros']|dictsort %}
+                        {% for category, parameters in sorted_categories %}
                             <div class="grid-item">
                                 <h3>{{ category }} : {{ parameters }}</h3>
                             </div>
