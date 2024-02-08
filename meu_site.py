@@ -1,6 +1,9 @@
 from flask import Flask, render_template, session, redirect, request, jsonify
 import json
 import requests
+import base64
+import cv2
+import os
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"  # Chave secreta para a sessão (deve ser mantida em segredo)
@@ -8,6 +11,38 @@ app.secret_key = "supersecretkey"  # Chave secreta para a sessão (deve ser mant
 # Usuário e senha válidos
 valid_username = "admin"
 valid_password = "senha1234"
+
+def encontrar_botao(imagem_grande, imagem_botao):
+    img_grande = cv2.imread(imagem_grande)
+    img_botao = cv2.imread(imagem_botao)
+
+    # Verifique se as imagens foram carregadas corretamente
+    if img_grande is None or img_botao is None:
+        return False, None, None, None, None, None, None
+
+    # Obtem dimensões da imagem do botão
+    altura, largura, _ = img_botao.shape
+
+    # Aplica correspondência de template
+    resultado = cv2.matchTemplate(img_grande, img_botao, cv2.TM_CCOEFF_NORMED)
+    _, _, _, max_loc = cv2.minMaxLoc(resultado)
+
+    # Defier um limite de confiança
+    limite_confianca = 0.5
+
+    # Verificar se o valor máximo excede o limite de confiança
+    if cv2.minMaxLoc(resultado)[1] > limite_confianca:
+        # Extrai as coordenadas x e y do canto superior esquerdo
+        x_inicial, y_inicial = max_loc
+
+        # Calcula as coordenadas x e y do centro da imagem
+        altura, largura, _ = img_botao.shape
+        x_centro = x_inicial + largura // 2
+        y_centro = y_inicial + altura // 2
+        #return True, x_centro, y_centro
+        return True, x_centro, y_centro, x_inicial, y_inicial, altura, largura
+    else:
+        return False, None, None, None, None, None, None
 
 @app.route("/")
 def root():
@@ -234,6 +269,42 @@ def is_user_authenticated():
 def logout():
     session.clear() #Limpa informações de autenticação do usuário
     return redirect("/login")
+
+@app.route('/comparar_imagens', methods=['POST'])
+def comparar_imagens():
+    # Recebe os dados base64 das imagens
+    imagem1_base64 = request.json.get('imagem1')
+    imagem2_base64 = request.json.get('imagem2')
+
+    # Decodifica as imagens base64
+    imagem1_data = base64.b64decode(imagem1_base64)
+    imagem2_data = base64.b64decode(imagem2_base64)
+
+    # Salva as imagens em um diretório específico
+    with open('imagem1.png', 'wb') as f1, open('imagem2.png', 'wb') as f2:
+        f1.write(imagem1_data)
+        f2.write(imagem2_data)
+
+    # Realiza a análise das imagens
+    botao_encontrado, x_centro, y_centro, x_inicial, y_inicial, altura, largura = encontrar_botao('imagem1.png', 'imagem2.png')
+
+    # Retorna os resultados em formato JSON
+    if botao_encontrado:
+        os.remove('imagem1.png')
+        os.remove('imagem2.png')
+        return jsonify({
+            "status": True,
+            "x_centro": x_centro,
+            "y_centro": y_centro,
+            "x_inicial": x_inicial,
+            "y_inicial": y_inicial,
+            "altura": altura,
+            "largura": largura
+        })
+    else:
+        os.remove('imagem1.png')
+        os.remove('imagem2.png')
+        return jsonify({"status": False})
 
 if __name__ == "__main__":
     app.run(debug=True)
