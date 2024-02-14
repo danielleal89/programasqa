@@ -27,8 +27,8 @@ def encontrar_botao(imagem_grande, imagem_botao):
     resultado = cv2.matchTemplate(img_grande, img_botao, cv2.TM_CCOEFF_NORMED)
     _, _, _, max_loc = cv2.minMaxLoc(resultado)
 
-    # Defier um limite de confiança
-    limite_confianca = 0.5
+    # Define um limite de confiança
+    limite_confianca = 0.6
 
     # Verificar se o valor máximo excede o limite de confiança
     if cv2.minMaxLoc(resultado)[1] > limite_confianca:
@@ -39,7 +39,6 @@ def encontrar_botao(imagem_grande, imagem_botao):
         altura, largura, _ = img_botao.shape
         x_centro = x_inicial + largura // 2
         y_centro = y_inicial + altura // 2
-        #return True, x_centro, y_centro
         return True, x_centro, y_centro, x_inicial, y_inicial, altura, largura
     else:
         return False, None, None, None, None, None, None
